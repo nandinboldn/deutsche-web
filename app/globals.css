@@ -1,0 +1,195 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── BASE ─────────────────────────────────────────────── */
+html  { font-size: 16px; scroll-behavior: smooth; }
+body  {
+  background: #F4F1EA;
+  color: #191918;
+  font-family: "Manrope", system-ui, sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── SCROLL REVEAL ────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(44px);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.in-view            { opacity: 1; transform: none; }
+.reveal-left               { opacity: 0; transform: translateX(-44px); transition: opacity 1s cubic-bezier(0.16,1,0.3,1), transform 1s cubic-bezier(0.16,1,0.3,1); }
+.reveal-left.in-view       { opacity: 1; transform: none; }
+.reveal-right              { opacity: 0; transform: translateX(44px); transition: opacity 1s cubic-bezier(0.16,1,0.3,1), transform 1s cubic-bezier(0.16,1,0.3,1); }
+.reveal-right.in-view      { opacity: 1; transform: none; }
+.reveal-scale              { opacity: 0; transform: scale(0.94); transition: opacity 1s cubic-bezier(0.16,1,0.3,1), transform 1s cubic-bezier(0.16,1,0.3,1); }
+.reveal-scale.in-view      { opacity: 1; transform: none; }
+
+.delay-100 { transition-delay: 0.1s !important; }
+.delay-200 { transition-delay: 0.2s !important; }
+.delay-300 { transition-delay: 0.3s !important; }
+.delay-400 { transition-delay: 0.4s !important; }
+.delay-500 { transition-delay: 0.5s !important; }
+.delay-600 { transition-delay: 0.6s !important; }
+
+/* ── INPUT SPINNER REMOVAL ────────────────────────────── */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; }
+input[type="number"] { -moz-appearance: textfield; }
+
+/* ── SCROLLBAR HIDE ───────────────────────────────────── */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ── IMAGE ZOOM ───────────────────────────────────────── */
+.img-zoom { overflow: hidden; }
+.img-zoom img { transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
+.img-zoom:hover img { transform: scale(1.06); }
+
+/* ── PAGE TRANSITION ──────────────────────────────────── */
+/* Triggered by key={pathname} on the SiteChrome wrapper   */
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-enter {
+  animation: pageEnter 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+/* ── THEME SYSTEM ─────────────────────────────────────── */
+/* CSS variables on .theme-wrapper drive background colour */
+/* and nav button/toggle colours across all page themes.   */
+/* The outer wrapper is NOT keyed so it persists across    */
+/* route changes — only background-color transitions,      */
+/* not a full remount.                                     */
+
+:root {
+  --theme-bg:               #F4F1EA;   /* flour  – default */
+  --theme-order-bg:         #468456;   /* green  – pill bg */
+  --theme-order-text:       #E8DDBF;   /* cream  – pill text */
+  --theme-order-hover:      #3a7049;
+  --theme-lang-active-bg:   #468456;
+  --theme-lang-active-text: #E8DDBF;
+}
+
+/* Persistent wrapper — smooth bg colour transition on theme change */
+.theme-wrapper {
+  min-height: 100vh;
+  background-color: var(--theme-bg);
+  transition: background-color 1.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ── Products theme — brand green ── */
+.theme-wrapper[data-theme="products"] {
+  --theme-bg:               #468456;
+  --theme-order-bg:         #F4F1EA;   /* cream pill on green */
+  --theme-order-text:       #468456;   /* green text */
+  --theme-order-hover:      #E8DDBF;
+  --theme-lang-active-bg:   rgba(244, 241, 234, 0.2);
+  --theme-lang-active-text: #F4F1EA;
+}
+
+/* ── Contact theme — brand orange ── */
+.theme-wrapper[data-theme="contact"] {
+  --theme-bg:               #FE770D;
+  --theme-order-bg:         #F4F1EA;   /* cream pill on orange */
+  --theme-order-text:       #191918;   /* charcoal text */
+  --theme-order-hover:      #E8DDBF;
+  --theme-lang-active-bg:   rgba(244, 241, 234, 0.85);
+  --theme-lang-active-text: #191918;
+}
+
+/* ── Theme-aware order CTA button (desktop nav) ── */
+/* Replaces the hardcoded bg-brand-green class.      */
+.btn-order-adaptive {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--theme-order-bg);
+  color: var(--theme-order-text);
+  padding: 10px 20px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition:
+    background-color 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    color            0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.btn-order-adaptive:hover {
+  filter: brightness(0.91);
+}
+
+/* ── Theme-aware language toggle pills ── */
+.lang-btn-adaptive {
+  transition:
+    background-color 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    color            0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.lang-btn-adaptive.lang-selected {
+  background-color: var(--theme-lang-active-bg);
+  color:            var(--theme-lang-active-text);
+}
+
+/* ── SECTION LABEL ────────────────────────────────────── */
+.section-label {
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* ── BUTTONS ──────────────────────────────────────────── */
+/* Primary — charcoal */
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: #191918; color: #F4F1EA;
+  padding: 15px 28px; font-size: 0.6875rem; letter-spacing: 0.15em;
+  text-transform: uppercase; font-weight: 500; text-decoration: none;
+  transition: background 0.3s;
+}
+.btn-primary:hover { background: #2A2A28; }
+
+/* Outline */
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 10px;
+  border: 1px solid currentColor; padding: 14px 27px;
+  font-size: 0.6875rem; letter-spacing: 0.15em;
+  text-transform: uppercase; font-weight: 500; text-decoration: none;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Brand green — primary CTA */
+.btn-green {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: #468456; color: #E8DDBF;
+  padding: 15px 28px; font-size: 0.6875rem; letter-spacing: 0.15em;
+  text-transform: uppercase; font-weight: 600; text-decoration: none;
+  transition: background 0.25s;
+}
+.btn-green:hover { background: #3a7049; }
+
+/* Brand orange — accent CTA */
+.btn-orange {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: #FE770D; color: #fff;
+  padding: 15px 28px; font-size: 0.6875rem; letter-spacing: 0.15em;
+  text-transform: uppercase; font-weight: 600; text-decoration: none;
+  transition: opacity 0.25s;
+}
+.btn-orange:hover { opacity: 0.88; }
+
+/* Legacy alias so older references don't break */
+.btn-wheat { display:inline-flex; align-items:center; gap:10px; background:#468456; color:#E8DDBF; padding:15px 28px; font-size:0.6875rem; letter-spacing:0.15em; text-transform:uppercase; font-weight:600; text-decoration:none; transition:background 0.25s; }
+.btn-wheat:hover { background:#3a7049; }

@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Deutsche Bäckerei | Монголын Германы Хэв Маягийн Талхны Үйлдвэр",
   description:
     "Deutsche Bäckerei нь Германы уламжлалт жигнэх арга, чанартай үрлийн бүтэц, орчин үеийн технологийг нэгтгэн Монголд гар хийцийн чанартай талх, хобо, булки болон бусад нарийн боов үйлдвэрлэдэг.",
-  keywords: ["Deutsche Bäckerei", "Монгол талх", "Герман уламжлал", "нарийн боов", "талхны үйлдвэр"],
+  keywords: ["Deutsche Bäckerei", "Монгол талх", "Германы уламжлал", "нарийн боов", "талхны үйлдвэр"],
   openGraph: {
     title: "Deutsche Bäckerei — German-Inspired Bakery in Mongolia",
     description: "German-inspired baking standards. Quality ingredients. Made fresh in Mongolia.",

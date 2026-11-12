@@ -12,7 +12,7 @@ export const UI_TEXT: Record<string, Record<Lang, any>> = {
   navMenuClose:     { en: "Close", mn: "Хаах" },
 
   // ── HERO ──────────────────────────────────────────────
-  heroLabel:        { en: "German-Inspired. Made in Mongolia.", mn: "Герман уламжлал. Монголд үйлдвэрлэв." },
+  heroLabel:        { en: "German-Inspired. Made in Mongolia.", mn: "Германы уламжлал. Монголд бэлтгэсэн." },
   heroTitle1:       { en: "GOOD BREAD", mn: "ЧАНАР БОЛОН АМТ" },
   heroTitle2:       { en: "TAKES TIME.", mn: "БИДНИЙ ДАВУУ ТАЛ." },
   heroSubtitle:     { en: "Crafted with precision. Baked with care.", mn: "Ням нарийнаар бэлтгэж, анхааралтайгаар жигнэнэ." },

@@ -87,7 +87,7 @@ export default function OrderForm({ products, initialProductId, phone }: {
         {/* Product selection */}
         <div className="px-5 sm:px-12 lg:px-20 mb-10">
           <div className="section-label text-charcoal/40 mb-6 flex items-center gap-4">
-            {t(lang, "selectProductsLabel")}
+            {/* {t(lang, "selectProductsLabel")} */}
             <span className="flex-1 h-px bg-charcoal/8" />
           </div>
           <div className="space-y-8">

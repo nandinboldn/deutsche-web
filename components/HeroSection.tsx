@@ -4,7 +4,6 @@ import { useLanguage } from "./LanguageProvider";
 import { t } from "@/lib/i18n";
 import { useEffect, useState } from "react";
 
-// const HERO_IMAGE = "https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=1920&q=90";
 const HERO_IMAGE = "/pictures/img1.jpg"
 
 export default function HeroSection() {
@@ -72,9 +71,9 @@ export default function HeroSection() {
         <div className={`flex items-end justify-end transition-all duration-1000 delay-[1100ms] ${loaded ? "opacity-100" : "opacity-0"}`}>
  
           {/* label */}
-        <div className={`transition-all duration-1000 delay-300 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+        {/* <div className={`transition-all duration-1000 delay-300 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
           <div className="sticky r-0 section-label text-brand-green">{t(lang, "heroLabel")}</div>
-        </div>
+        </div> */}
 
           {/* <div className="hidden sm:flex flex-col items-center gap-2 opacity-30">
             <div className="w-px h-10 bg-flour relative overflow-hidden">

@@ -24,7 +24,7 @@ export default function OrderPageView({ products, initialProductId, hasError }: 
       </div>
 
       <div className="max-w-screen-xl mx-auto px-5 sm:px-12 lg:px-20 mb-10">
-        <div className="section-label text-brand-green mb-4">{t(lang, "orderEyebrow")}</div>
+        {/* <div className="section-label text-brand-green mb-4">{t(lang, "orderEyebrow")}</div> */}
         <h1 className="font-serif text-display-md text-charcoal leading-none">{t(lang, "orderTitle")}</h1>
         {hasError && <p className="mt-4 text-sm text-muted-red">{t(lang, "orderErrorMsg")}</p>}
       </div>
